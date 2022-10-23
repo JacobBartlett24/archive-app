@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./Home";
+import Header from "./Header"
+import Footer from "./Footer"
+import styled from "styled-components";
+
+//Default Body Styling
+
+document.body.style.margin = 0;
+document.body.style.fontFamily = 'IBM Plex Mono, monospace';
+document.body.style.background = '#343434'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Home />
+      <Footer />
     </div>
   );
 }

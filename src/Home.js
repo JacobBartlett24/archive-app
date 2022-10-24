@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Image from "./Images/PngItem_851857.png"
 
 const HomeStyle = styled.div`
     display: grid;
@@ -23,8 +24,9 @@ const ImagePlaylist = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 80vw;
+    width: 100%;
     height: 20rem;
+    padding: 1rem;
     background-color: #111111;
     margin: 2rem 0;
     border-radius: 15px;
@@ -38,24 +40,36 @@ const Images = styled.div`
     justify-content: center;
     align-items: center;
     div{
-       height: 15rem;
-       width: 11rem;
-       border: 3px solid white;
+       height: 250px;
+       width: 200px;
+       border: 1px solid white;
        color: white;
-       margin: 1rem; 
+       margin: 10px; 
+    }
+    img{
+        height:250px;
+        width: 200px;
     }
 `
+
+function makeImageList(image){
+
+}
 
 function Home(){
 
     
     return(
+        
         <HomeStyle>
+            
             <ImagePlaylistContainers>
                 <h2 style={{margin: 0}}>Playlist</h2>
                 <ImagePlaylist>
                     <Images>
-                        <div>Content</div>
+                        <div>
+                            <img src={Image} alt="" />
+                        </div>
                         <div>Content</div>
                         <div>Content</div>
                         <div>Content</div>

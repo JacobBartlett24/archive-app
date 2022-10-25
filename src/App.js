@@ -1,18 +1,24 @@
 import Home from "./Home";
-import Header from "./Header"
+import {Header,HeaderItem,DropdownMenu} from "./Header"
 import Footer from "./Footer"
-import styled from "styled-components";
+import {ReactComponent as SearchIcon} from './Images/magnifying-glass-solid.svg';
+import {ReactComponent as UserIcon} from './Images/user-solid.svg';
+import {ReactComponent as CaretIcon} from './Images/caret-down-solid.svg';
 
 //Default Body Styling
 
-document.body.style.margin = 0;
-document.body.style.fontFamily = 'IBM Plex Mono, monospace';
-document.body.style.background = '#343434'
+
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header>
+        <HeaderItem icon ={<SearchIcon />}  />  
+        <HeaderItem icon ={<UserIcon />}  />  
+        <HeaderItem icon ={<CaretIcon />}>
+        <DropdownMenu leftIcon={<UserIcon />} rightIcon = {<UserIcon />}/>
+        </HeaderItem>  
+      </Header>
       <Home />
       <Footer />
     </div>

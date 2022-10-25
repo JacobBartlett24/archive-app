@@ -1,26 +1,96 @@
 import { useState } from "react";
-import styled from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./Profile";
+import { CSSTransition } from "react-transition-group";
 
-const HeaderStyle = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    height: 60px;
-    color: white;
-    font-size: larger;
-    font-weight: bold;
-`
 
-function Header(){
+export function Header(props){
 
     return(
+        <nav className="navbar">
+            <ul className="navbar-nav">{props.children}</ul>
+        </nav>
         
-        <HeaderStyle>
-            <div>Archived</div>
-        </HeaderStyle>
     )
 }
 
-export default Header;
+export function HeaderItem(props){
+
+    const[open, setOpen] = useState(false);
+
+    
+
+    return(
+        <li className="nav-item">
+            <a href="#" className="icon-button" onClick = {() => setOpen(!open)}>
+                {props.icon}
+            </a>
+
+            {open && props.children}
+        </li>
+    )
+}
+
+export function DropdownMenu(props){
+
+    const [activeMenu,setActiveMenu] = useState('main')
+
+    function DropdownItem(props){
+        return(
+        <a href="" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+            <span className="icon-button">{props.leftIcon}</span>
+            {props.children}
+
+            <span className="icon-right">{props.rightIcon}</span>
+        </a> 
+        );
+    }
+    
+    return(
+        <div className="dropdown">        
+            <CSSTransition 
+                in = {activeMenu == 'main'} 
+                unmountOnExit 
+                timeout={500} 
+                classNames = "menu-primary">
+                    <div className="menu">
+                        <DropdownItem
+                            leftIcon={props.leftIcon}
+                            rightIcon={props.rightIcon}
+                            goToMenu="profile">
+                            My Profile
+                        </DropdownItem>
+                        <DropdownItem
+                            leftIcon={props.leftIcon}
+                            rightIcon={props.rightIcon}
+                            goToMenu="profile">
+                                My Profile
+                        </DropdownItem>
+                    </div>
+            </CSSTransition>
+
+            <CSSTransition 
+                in = {activeMenu == 'profile'} 
+                unmountOnExit 
+                timeout={500} 
+                classNames = "menu-secondary">
+                    <div className="menu">
+                        <DropdownItem
+                            leftIcon={props.leftIcon}
+                            rightIcon={props.rightIcon}
+                            >
+                            My Profile
+                        </DropdownItem>
+                        <DropdownItem
+                            leftIcon={props.leftIcon}
+                            rightIcon={props.rightIcon}
+                            >
+                                My Profile
+                        </DropdownItem>
+                        
+                    </div>
+            </CSSTransition>
+                    
+        </div>
+    )
+}

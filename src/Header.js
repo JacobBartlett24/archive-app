@@ -47,50 +47,21 @@ export function DropdownMenu(props){
     }
     
     return(
-        <div className="dropdown">        
-            <CSSTransition 
-                in = {activeMenu == 'main'} 
-                unmountOnExit 
-                timeout={500} 
-                classNames = "menu-primary">
-                    <div className="menu">
-                        <DropdownItem
-                            leftIcon={props.leftIcon}
-                            rightIcon={props.rightIcon}
-                            goToMenu="profile">
-                            My Profile
-                        </DropdownItem>
-                        <DropdownItem
-                            leftIcon={props.leftIcon}
-                            rightIcon={props.rightIcon}
-                            goToMenu="profile">
-                                My Profile
-                        </DropdownItem>
-                    </div>
-            </CSSTransition>
-
-            <CSSTransition 
-                in = {activeMenu == 'profile'} 
-                unmountOnExit 
-                timeout={500} 
-                classNames = "menu-secondary">
-                    <div className="menu">
-                        <DropdownItem
-                            leftIcon={props.leftIcon}
-                            rightIcon={props.rightIcon}
-                            >
-                            My Profile
-                        </DropdownItem>
-                        <DropdownItem
-                            leftIcon={props.leftIcon}
-                            rightIcon={props.rightIcon}
-                            >
-                                My Profile
-                        </DropdownItem>
-                        
-                    </div>
-            </CSSTransition>
-                    
+        <div className="dropdown">            
+            <div className="menu">
+                <DropdownItem
+                    leftIcon={props.leftIcon}
+                    rightIcon={props.rightIcon}
+                    goToMenu="profile">
+                    My Profile
+                </DropdownItem>
+                <DropdownItem
+                    leftIcon={props.leftIcon}
+                    rightIcon={props.rightIcon}
+                    goToMenu="profile">
+                    Settings
+                </DropdownItem>
+            </div>
         </div>
     )
 }

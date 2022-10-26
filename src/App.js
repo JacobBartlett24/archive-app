@@ -4,15 +4,16 @@ import Footer from "./Footer"
 import {ReactComponent as SearchIcon} from './Images/magnifying-glass-solid.svg';
 import {ReactComponent as UserIcon} from './Images/user-solid.svg';
 import {ReactComponent as CaretIcon} from './Images/caret-down-solid.svg';
-
+import LandingPage from "./LandingPage"
 //Default Body Styling
 
 
 
 function App() {
+  
   return (
     <div className="App">
-      <Header>
+      {/*<Header>
         <HeaderItem icon ={<SearchIcon />}  />  
         <HeaderItem icon ={<UserIcon />}  />  
         <HeaderItem icon ={<CaretIcon />}>
@@ -20,7 +21,8 @@ function App() {
         </HeaderItem>  
       </Header>
       <Home />
-      <Footer />
+      <Footer />*/}
+      <LandingPage />
     </div>
   );
 }

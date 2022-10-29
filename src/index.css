@@ -130,52 +130,38 @@ code {
   overflow: hidden;
 }
 
-.landingPageTitle,.titleAnimation{
-  margin: 0rem 0rem 2rem 0rem;
+
+.landingPageTitle{
   font-size: 10rem;
+  margin: auto;
   color: whitesmoke;
   position: absolute;
+  text-align: center;
   height:13rem;
-  top:150px;
-  left:90px;  
-}
-
-#opaque{
-  position: absolute;
-  height:13rem;
-  top:150px;
-  left:30px;
-  width: 100px;  
-  margin: 0rem 0rem 2rem 0rem;
-  z-index:10;
-  background: rgba(180, 180, 0, 0.3);
-  animation: opaque-animated 5s forwards;
-}
-
-@keyframes opaque-animated {
-  0% {
-    right: 110%;
-  }
-  50% {
-    right: 0%;
-    left: 0%;
-  }
-  100% {
-    right: 0;
-    left: 100%;
-  }
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .titleAnimation{
-  z-index:10;
-  background: #000;
-  width: 90rem;
-  animation: underline-animated 5s forwards;
+  background-color: Black;
+  position: absolute;
+  margin: auto;
+  height:13rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  animation: underline-animated 3s forwards 1;
 }
+
+
 
 @keyframes underline-animated {
   0% {
-    right: 90%;
+    left: 0;
   }
   50% {
     right: 0;
@@ -190,4 +176,13 @@ code {
 .enterButton{
   color: whitesmoke;
   font-size: 4rem;
+  margin: auto;
+  color: whitesmoke;
+  position: absolute;
+  text-align: center;
+  height:13rem;
+  top: 22rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

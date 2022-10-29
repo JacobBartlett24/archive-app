@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Outlet,Link } from "react-router-dom";
+
 
 function LandingPage(){
 
@@ -6,11 +8,9 @@ function LandingPage(){
 
         <div className="landingPage">
             <h1 className="landingPageTitle">Archive.app</h1>
-            <div className="titleAnimation" id="opaque"></div>
             <div className="titleAnimation">
-                
             </div>
-            <a href="" className="enterButton">Enter</a>
+            <Link to ="/Home"><a href="" className="enterButton">Enter</a></Link>
         </div>
     )
 }

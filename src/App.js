@@ -5,7 +5,7 @@ import {ReactComponent as SearchIcon} from './Images/magnifying-glass-solid.svg'
 import {ReactComponent as UserIcon} from './Images/user-solid.svg';
 import {ReactComponent as CaretIcon} from './Images/caret-down-solid.svg';
 import LandingPage from "./LandingPage"
-//Default Body Styling
+import { Routes,BrowserRouter,Route } from "react-router-dom";
 
 
 
@@ -13,16 +13,22 @@ function App() {
   
   return (
     <div className="App">
-      {/*<Header>
-        <HeaderItem icon ={<SearchIcon />}  />  
-        <HeaderItem icon ={<UserIcon />}  />  
-        <HeaderItem icon ={<CaretIcon />}>
-        <DropdownMenu leftIcon={<UserIcon />} rightIcon = {<UserIcon />}/>
-        </HeaderItem>  
-      </Header>
-      <Home />
-      <Footer />*/}
-      <LandingPage />
+      <BrowserRouter>
+        <Routes>
+        {/*<Header>
+            <HeaderItem icon ={<SearchIcon />}  />
+            <HeaderItem icon ={<UserIcon />}  />
+            <HeaderItem icon ={<CaretIcon />}>
+            <DropdownMenu leftIcon={<UserIcon />} rightIcon = {<UserIcon />}/>
+            </HeaderItem>
+        </Header>
+          
+  <Footer />*/}
+          <Route path = "/Home" element ={<><Header /><Home /><Footer /></>}/>
+          <Route index element={<LandingPage />} />
+                      
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

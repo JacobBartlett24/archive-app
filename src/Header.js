@@ -2,13 +2,22 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./Profile";
 import { CSSTransition } from "react-transition-group";
-
+import {ReactComponent as SearchIcon} from './Images/magnifying-glass-solid.svg';
+import {ReactComponent as UserIcon} from './Images/user-solid.svg';
+import {ReactComponent as CaretIcon} from './Images/caret-down-solid.svg';
 
 export function Header(props){
 
     return(
         <nav className="navbar">
-            <ul className="navbar-nav">{props.children}</ul>
+            <ul className="navbar-nav">{props.children}
+            <HeaderItem icon ={<SearchIcon />}  />
+            <HeaderItem icon ={<UserIcon />}  />
+            <HeaderItem icon ={<CaretIcon />}>
+            <DropdownMenu leftIcon={<UserIcon />} rightIcon = {<UserIcon />}/>
+            </HeaderItem>
+            </ul>
+            
         </nav>
         
     )

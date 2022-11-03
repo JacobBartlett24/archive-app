@@ -6,6 +6,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -66,7 +67,7 @@ code {
 }
 
 .icon-button{
-  --button-size: calc(var(var(--nav-size)*0.5));
+  --button-size: calc(var(--nav-size)*0.5);
   width: var(--button-size);
   height: var(--button-size);
   background-color: #484a4d;
@@ -186,3 +187,56 @@ code {
   bottom: 0;
   left: 0;
 }
+
+#profile{
+  width: 100%;
+  height: 52rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.profilePage{
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  grid-template-rows: 100vh;
+  gap: 2rem;
+  min-height: 100vh;
+  width: 95vw;
+  overflow: hidden;
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+#profileInformation{
+  width: 90%;
+  height: 24rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+#profilePictureContainer{
+  width:90%;
+  height:50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#profilePicture{
+  width: 20rem;
+  height: 20rem;
+  background: black;
+  border-radius: 50%;
+}
+
+#something{
+  width: 100%;
+  height: 52rem;
+  border-radius: 15px;
+  background-color: var(--bg);
+}
+

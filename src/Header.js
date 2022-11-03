@@ -5,6 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import {ReactComponent as SearchIcon} from './Images/magnifying-glass-solid.svg';
 import {ReactComponent as UserIcon} from './Images/user-solid.svg';
 import {ReactComponent as CaretIcon} from './Images/caret-down-solid.svg';
+import { Link } from "react-router-dom";
 
 export function Header(props){
 
@@ -12,12 +13,11 @@ export function Header(props){
         <nav className="navbar">
             <ul className="navbar-nav">{props.children}
             <HeaderItem icon ={<SearchIcon />}  />
-            <HeaderItem icon ={<UserIcon />}  />
+            <HeaderItem icon ={<Link to ="/Profile"><UserIcon /></Link>}/>
             <HeaderItem icon ={<CaretIcon />}>
             <DropdownMenu leftIcon={<UserIcon />} rightIcon = {<UserIcon />}/>
             </HeaderItem>
             </ul>
-            
         </nav>
         
     )
@@ -58,12 +58,14 @@ export function DropdownMenu(props){
     return(
         <div className="dropdown">            
             <div className="menu">
+            <Link to="/Profile">
                 <DropdownItem
                     leftIcon={props.leftIcon}
                     rightIcon={props.rightIcon}
                     goToMenu="profile">
                     My Profile
                 </DropdownItem>
+            </Link>
                 <DropdownItem
                     leftIcon={props.leftIcon}
                     rightIcon={props.rightIcon}

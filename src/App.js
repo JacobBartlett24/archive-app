@@ -4,7 +4,7 @@ import Footer from "./Footer"
 import Profile from "./Profile";
 import LandingPage from "./LandingPage"
 import { Routes,BrowserRouter,Route } from "react-router-dom";
-
+import ViewPlaylist from "./ViewPlaylist";
 
 
 function App() {
@@ -13,10 +13,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/Profile" element={<><Header /><Profile /><Footer /></>}/>
+          
           <Route path = "/Home" element ={<><Header /><Home /><Footer /></>}/>
           <Route index element={<LandingPage />} />
-                      
+          <Route path = "/ViewPlaylist" element={<><Header /><ViewPlaylist/><Footer /></>}></Route>            
         </Routes>
       </BrowserRouter>
     </div>

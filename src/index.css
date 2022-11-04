@@ -46,7 +46,10 @@ code {
   height: var(--nav-size);
   background-color: var(--bg);
   padding: 0 1rem;
-  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: var(--border);
 }
 
@@ -117,6 +120,10 @@ code {
 
 .icon-right{
   margin-left: auto;
+}
+
+.app{
+  overflow: hidden;
 }
 
 .landingPage{
@@ -215,6 +222,7 @@ code {
   height: 24rem;
   padding: 1rem;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
 #profilePictureContainer{
@@ -238,5 +246,10 @@ code {
   height: 52rem;
   border-radius: 15px;
   background-color: var(--bg);
+}
+
+#navTitle{
+  margin: 0;
+  color: #A9A9A9;
 }
 

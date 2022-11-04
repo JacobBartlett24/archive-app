@@ -11,12 +11,18 @@ export function Header(props){
 
     return(
         <nav className="navbar">
+            <Link to="/Home"><h1 id="navTitle">Archive.app</h1></Link>
             <ul className="navbar-nav">{props.children}
-            <HeaderItem icon ={<SearchIcon />}  />
-            <HeaderItem icon ={<Link to ="/Profile"><UserIcon /></Link>}/>
-            <HeaderItem icon ={<CaretIcon />}>
-            <DropdownMenu leftIcon={<UserIcon />} rightIcon = {<UserIcon />}/>
-            </HeaderItem>
+            
+            
+                <HeaderItem icon ={<SearchIcon />}  />
+            
+                <HeaderItem icon ={<Link to ="/Profile"><UserIcon /></Link>}/>
+            
+                <HeaderItem icon ={<CaretIcon />}>
+                <DropdownMenu leftIcon={<UserIcon />} rightIcon = {<UserIcon />}/>
+                </HeaderItem>
+            
             </ul>
         </nav>
         

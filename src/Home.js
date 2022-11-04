@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Image from "./Images/PngItem_851857.png"
+import { Link } from "react-router-dom";
 
 const HomeStyle = styled.div`
     display: grid;
@@ -66,6 +67,9 @@ function Home(){
             <ImagePlaylistContainers>
                 <h2 style={{margin: 0}}>Playlist</h2>
                 <ImagePlaylist>
+                    <Link to="/ViewPlaylist">
+                        <div class="playlistTitle">View Playlist</div>
+                    </Link>
                     <Images>
                         <div>
                             <img src={Image} alt="" />

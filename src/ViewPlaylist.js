@@ -1,5 +1,6 @@
 import { useState } from "react";
 import imageSrc from "./Images/PngItem_851857.png";
+import newImageSrc from "./Images/depositphotos_25143517-stock-photo-cool-dog.jpg"
 import {ReactComponent as ArrowIcon} from './Images/arrow-right-solid.svg'
 
 class Image{
@@ -19,10 +20,16 @@ function ViewPlaylist(){
         let imagePlaylist = []
 
         for (let i = 0; i < 10; i++){
-            let image = new Image;
-            image.id = i;
-            image.src = imageSrc; 
-            imagePlaylist.push(image)        
+            let image = new Image();
+            if(i%2 === 0){
+                image.id = i;
+                image.src = imageSrc; 
+                imagePlaylist.push(image)    
+            }else{
+                image.id = i;
+                image.src = newImageSrc; 
+                imagePlaylist.push(image)    
+            }
         }
         return imagePlaylist;
     }
@@ -31,13 +38,11 @@ function ViewPlaylist(){
 
     const nextImage = (e) =>{
 
-        if(e.currentTarget.id === 'previous' && currentImage != 0){    
+        if(e.currentTarget.id === 'previous' && currentImage !== 0){    
             switchImage(currentImage - 1);
         } else if (e.currentTarget.id === 'next'){
             switchImage(currentImage + 1);
         }
-        
-        console.log()
     }
     
     
@@ -48,7 +53,7 @@ function ViewPlaylist(){
             
             <div id="imageSlider">
                 <div id="previousArrow">
-                    <a onClick={nextImage} id="previous"><ArrowIcon /></a>
+                    <a onClick={nextImage} href="#" id="previous"><ArrowIcon /></a>
                 </div>
                 <div id="currentImage">
                     <img className="image"
@@ -56,7 +61,7 @@ function ViewPlaylist(){
                          src={imagePlaylist[currentImage].src} alt="" />
                 </div>
                 <div id="nextArrow">
-                    <a id="next" onClick={nextImage}><ArrowIcon /></a>
+                    <a id="next" href="#" onClick={nextImage}><ArrowIcon /></a>
                 </div>
                 <div>{currentImage}</div>
             </div>

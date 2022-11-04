@@ -253,3 +253,35 @@ code {
   color: #A9A9A9;
 }
 
+#imageSlider{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+#previousArrow{
+  height: 100px;
+  width: 100px;
+  transform: rotate(180deg);
+  
+}
+
+#currentImage{
+  width: 750px;
+  height: 750px;
+  border: 1px solid black;
+  margin-right: 5rem;
+  margin-left: 5rem;
+}
+
+#nextArrow{
+  height: 100px;
+  width: 100px;
+}
+
+.image{
+  height: inherit;
+  width: inherit;
+}

@@ -13,5 +13,3 @@ pool.query(
         return console.log(res)
     }
 )
-
-export default pool;

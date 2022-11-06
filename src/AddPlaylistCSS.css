@@ -83,3 +83,15 @@ button,.add-image {
     margin-top: 1rem;
 }
 
+.add-image{
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--bg-accent);
+    padding: .3rem;
+    border-radius: var(--border-radius);
+    border: var(--border);   
+}
+
+#add-image-textarea{
+    margin-bottom: 1rem;
+}

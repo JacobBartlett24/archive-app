@@ -6,6 +6,7 @@ import {ReactComponent as SearchIcon} from './Images/magnifying-glass-solid.svg'
 import {ReactComponent as UserIcon} from './Images/user-solid.svg';
 import {ReactComponent as CaretIcon} from './Images/caret-down-solid.svg';
 import { Link } from "react-router-dom";
+import {ReactComponent as PlusIcon} from './Images/plus-solid.svg';
 
 export function Header(props){
 
@@ -14,7 +15,8 @@ export function Header(props){
             <Link to="/Home"><h1 id="navTitle">Archive.app</h1></Link>
             <ul className="navbar-nav">{props.children}
             
-            
+                <HeaderItem icon ={<Link to ="/AddPlaylist"><PlusIcon /></Link>}/>
+
                 <HeaderItem icon ={<SearchIcon />}  />
             
                 <HeaderItem icon ={<Link to ="/Profile"><UserIcon /></Link>}/>

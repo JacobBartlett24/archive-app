@@ -1,0 +1,85 @@
+:root{
+    --bg:  #242526;
+    --bg-accent: #484a4d;
+    --text-color: #dadce1;
+    --nav-size: 60px;
+    --border: 1px solid #474a4d;
+    --border-radius: 8px;
+    --speed: 500ms; 
+  
+}
+
+.add-playlist-container{
+    height:90vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add-playlist-menu{
+    min-width: 20rem;
+    min-height: 20rem;
+    background-color: var(--bg);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+    border-radius: var(--border-radius);
+    display: grid;
+    grid-template-rows: 3rem 1fr;
+    border: var(--border);
+    
+}
+
+.menu-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: 700;
+    border-bottom: var(--border);
+    color: whitesmoke;
+}
+
+.form-item
+label,
+input,
+textarea
+button,
+select{
+  font-size: 1.3rem;
+  line-height: 1.2
+}
+
+.form-item:last-child{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    
+}
+
+form{
+    color: whitesmoke;
+    max-width: 80%;
+    margin: 1rem auto;
+}
+
+label {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+  
+input,
+textarea {
+  padding: 0.2rem;
+  width: 90%;
+}
+  
+button,.add-image {
+  margin: 2rem 1rem 0 1rem;
+}
+
+.add-image-form-item{
+    border-top: var(--border);
+    margin-top: 1rem;
+}
+

@@ -44,8 +44,6 @@ function ViewPlaylist(){
             switchImage(currentImage + 1);
         }
     }
-    
-    
 
     return(
         <div>

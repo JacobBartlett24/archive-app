@@ -5,7 +5,7 @@ import Profile from "./Profile";
 import LandingPage from "./LandingPage"
 import { Routes,BrowserRouter,Route } from "react-router-dom";
 import ViewPlaylist from "./ViewPlaylist";
-
+import AddPlaylist from "./AddPlaylist";
 
 function App() {
   
@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          
+          <Route path = "/AddPlaylist" element={<><Header /><AddPlaylist /><Footer /></>} />
           <Route path = "/Home" element ={<><Header /><Home /><Footer /></>}/>
           <Route index element={<LandingPage />} />
           <Route path = "/ViewPlaylist" element={<><Header /><ViewPlaylist/><Footer /></>}></Route>            

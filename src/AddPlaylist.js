@@ -10,6 +10,18 @@ const AddPlaylist = () => {
     const [addImageDivList,setAddImageDivList] = useState([]);
     const [tempImageList,setTempImageList] = useState([]);
     const [pendingPlaylist,pendingPlaylistActive] = useState(false);
+    const [currentImageSrc, setCurrentImageSrc] = useState('')
+    const [currentImageBio, setCurrentImageBio] = useState('')
+
+    const handleImageSrcChange = e =>{
+        setCurrentImageSrc(e.target.value);
+        console.log(e.target.value)
+    }
+
+    const handleImageBioChange = (e) =>{
+        setCurrentImageBio(e.target.value);
+        console.log(e.target.value)
+    }
 
     const alertOnSuccess = () =>{
         alert("Image Added")
@@ -17,6 +29,7 @@ const AddPlaylist = () => {
 
     const addTempImage = (e) =>{
         setTempImageList(tempImageList.concat(e.currentTarget));
+        console.log(e.currentTarget.parentNode)
         refreshAddImageForm(e)
     }
 
@@ -42,9 +55,19 @@ const AddPlaylist = () => {
         setAddImageDivList(addImageDivList.concat(
             <div className="add-image-form-item">
                <label htmlFor="imagesrc">Image Source</label>
-               <input className="inputImageSrc"type="text" />
+               <input className="inputImageSrc"
+                      type="text"
+                       onChange={handleImageSrcChange} 
+                       />
                <label htmlFor="imagedescription">Image Description</label>
-               <textarea id = "add-image-textarea" name="imagedescription" cols="30" rows="10"></textarea>
+               <textarea id = "add-image-textarea" 
+                         name="imagedescription"
+                         cols="30" 
+                         rows="10"
+                         onChange={handleImageBioChange}
+                         >
+
+                         </textarea>
                <a href="#" onClick={addTempImage} className="add-image">Add Image</a>
             </div>
         ))

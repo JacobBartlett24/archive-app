@@ -285,3 +285,7 @@ code {
   height: inherit;
   width: inherit;
 }
+
+.hidden{
+  display: none;
+}

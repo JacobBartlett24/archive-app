@@ -2,14 +2,7 @@ import { useState } from "react";
 import imageSrc from "./Images/PngItem_851857.png";
 import newImageSrc from "./Images/depositphotos_25143517-stock-photo-cool-dog.jpg"
 import {ReactComponent as ArrowIcon} from './Images/arrow-right-solid.svg'
-
-class Image{
-    constructor(src,id){
-        this.src = src
-        this.id = id
-    }
-}
-
+import Image from "./ImagesClass"
 
 function ViewPlaylist(){
 
@@ -38,19 +31,19 @@ function ViewPlaylist(){
 
     const nextImage = (e) =>{
 
-        if(e.currentTarget.id === 'previous' && currentImage !== 0){    
+        if(e.currentTarget.id === 'previous' ){    
             switchImage(currentImage - 1);
         } else if (e.currentTarget.id === 'next'){
             switchImage(currentImage + 1);
         }
+
+       
     }
 
     return(
         <div>
-            View Playlist Page
-            
             <div id="imageSlider">
-                <div id="previousArrow">
+                <div id="previousArrow" className={`${currentImage == 0 ? 'hidden':''} `}>
                     <a onClick={nextImage} href="#" id="previous"><ArrowIcon /></a>
                 </div>
                 <div id="currentImage">
@@ -58,10 +51,9 @@ function ViewPlaylist(){
                          id={imagePlaylist[currentImage].id}
                          src={imagePlaylist[currentImage].src} alt="" />
                 </div>
-                <div id="nextArrow">
+                <div id="nextArrow" className={`${currentImage == imagePlaylist.length - 1 ? 'hidden':''}`}>
                     <a id="next" href="#" onClick={nextImage}><ArrowIcon /></a>
-                </div>
-                <div>{currentImage}</div>
+                </div>   
             </div>
         </div>
     );

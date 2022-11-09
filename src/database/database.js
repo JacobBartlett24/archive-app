@@ -1,15 +1,27 @@
-const {createPool} = require('mysql');
+const express = require('express');
+const mysql = require('mysql');
 
-const pool = createPool({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    connectionLimit: 10
+//create connection
+const db = mysql.createConnection({    
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'archive'
+});
+
+// Connect
+
+db.connect((err) => {
+    if(err){
+        throw err;
+    }
+    console.log("mysql connected")
 })
 
-pool.query(
-    `select * from archive.playlists`,
-    (err, res) =>{
-        return console.log(res)
-    }
-)
+const app = express();
+
+app.listen('3001', () =>{
+    console.log('server started on port 3000')
+})
+
+module.exports = db;

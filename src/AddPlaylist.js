@@ -1,7 +1,9 @@
+
 import { useState } from "react"
 import "./AddPlaylistCSS.css"
-//import Image from "./ImagesClass"
-//import DatabaseFunctions from "./database/database"
+import Image from "./ImagesClass"
+
+
 
 const AddPlaylist = () => {
 

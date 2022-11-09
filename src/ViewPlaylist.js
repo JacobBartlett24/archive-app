@@ -30,14 +30,11 @@ function ViewPlaylist(){
     let imagePlaylist = populateImageSlider();
 
     const nextImage = (e) =>{
-
         if(e.currentTarget.id === 'previous' ){    
             switchImage(currentImage - 1);
         } else if (e.currentTarget.id === 'next'){
             switchImage(currentImage + 1);
         }
-
-       
     }
 
     return(

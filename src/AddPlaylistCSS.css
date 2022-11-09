@@ -15,9 +15,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
-#add-playlist-menu{
+.add-playlist-menu{
     min-width: 20rem;
     min-height: 20rem;
     background-color: var(--bg);
@@ -26,7 +27,7 @@
     display: grid;
     grid-template-rows: 3rem 1fr;
     border: var(--border);
-    
+    margin: 0 2rem 0 2rem;
 }
 
 .menu-title{

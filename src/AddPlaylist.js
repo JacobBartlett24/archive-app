@@ -9,6 +9,7 @@ const AddPlaylist = () => {
 
     const [addImageDivList,setAddImageDivList] = useState([]);
     const [tempImageList,setTempImageList] = useState([]);
+    const [pendingPlaylist,pendingPlaylistActive] = useState(false);
 
     const alertOnSuccess = () =>{
         alert("Image Added")
@@ -33,6 +34,10 @@ const AddPlaylist = () => {
         textarea.value = "";
     }
 
+    const addPendingPlaylistContainer = () =>{
+        pendingPlaylistActive(pendingPlaylist => !pendingPlaylist);
+    }
+
     const addImage = (e) =>{
         setAddImageDivList(addImageDivList.concat(
             <div className="add-image-form-item">
@@ -43,12 +48,13 @@ const AddPlaylist = () => {
                <a href="#" onClick={addTempImage} className="add-image">Add Image</a>
             </div>
         ))
-
+        e.currentTarget.classList.add("hidden")
+        addPendingPlaylistContainer()
     }
 
     return(
         <div className="add-playlist-container">
-            <div id="add-playlist-menu">
+            <div className="add-playlist-menu">
                 <div className="menu-title">Add Playlist</div>
                 <form action="" method="get">
                     <div className="form-item">
@@ -65,7 +71,14 @@ const AddPlaylist = () => {
                     </div>
                     {addImageDivList}
                 </form>
-                
+
+               
+            </div>
+            <div className={`${pendingPlaylist ? "SSSS" :"hidden" }`}>
+                <div className="add-playlist-menu pending-playlist">
+                    <div className="menu-title">Current Playlist</div>
+                    {"asdasdasd"}
+                </div>
             </div>
         </div>
     )

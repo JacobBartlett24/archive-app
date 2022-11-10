@@ -1,85 +1,30 @@
 
-import { useState } from "react"
+import { useState,useRef } from "react"
 import "./AddPlaylistCSS.css"
 import Image from "./ImagesClass"
-
-
+import AddImageForm from "./AddImageForm"
 
 const AddPlaylist = () => {
 
+    
     const [addImageDivList,setAddImageDivList] = useState([]);
     const [tempImageList,setTempImageList] = useState([]);
     const [pendingPlaylist,pendingPlaylistActive] = useState(false);
-    const [currentImageSrc, setCurrentImageSrc] = useState('')
-    const [currentImageBio, setCurrentImageBio] = useState('')
-
-    const handleImageSrcChange = e =>{
-        setCurrentImageSrc(e.target.value);
-        console.log(currentImageSrc)
-    }
-
-    const handleImageBioChange = e =>{
-        setCurrentImageBio(e.target.value);
-        
-        
-    }
+    
+    const [src,updateSrc] = useState('')
+    const [bio,updateBio] = useState('')
 
     const alertOnSuccess = () =>{
         alert("Image Added")
-    }
-
-    const addTempImage = () =>{
-        
-        setTempImageList(tempImageList.concat(
-        <div key={tempImageList.length}>
-            <h3>{currentImageSrc}</h3>
-            <p>{currentImageBio}</p>
-        </div>
-        ));
-        console.log(addImageDivList)
-        
-    }
-
-    const refreshAddImageForm = (e) =>{
-        let input = e.currentTarget.parentNode.querySelector('input');
-        let textarea = e.currentTarget.parentNode.querySelector('textarea');
-        /*
-        let image = new Image();
-        let db = new DatabaseFunctions();
-        image.src = input.value
-        image.addBio(textarea.value)
-        db.addImageDB(image)
-        */
-        input.value = "";
-        textarea.value = "";
     }
 
     const addPendingPlaylistContainer = () =>{
         pendingPlaylistActive(pendingPlaylist => !pendingPlaylist);
     }
 
-    const addImage = (e) =>{
-        setAddImageDivList(addImageDivList.concat(
-            <div key={addImageDivList.length} className="add-image-form-item">
-               <label htmlFor="imagesrc">Image Source</label>
-               <input className="inputImageSrc"
-                      type="text"
-                       onChange={handleImageSrcChange} 
-                       />
-               <label htmlFor="imagedescription">Image Description</label>
-               <textarea id = "add-image-textarea" 
-                         name="imagedescription"
-                         cols="30" 
-                         rows="10"
-                         onChange={e => setCurrentImageBio(e.target.value)}
-                         >
-
-                         </textarea>
-               <a href="#" onClick={addTempImage} className="add-image">Add Image</a>
-            </div>
-        ))
+    const addImage = () =>{
         
-        e.currentTarget.classList.add("hidden")
+        
         addPendingPlaylistContainer()
     }
 
@@ -100,11 +45,30 @@ const AddPlaylist = () => {
                         <button type="submit">Post</button>
                         <a href="#" className="add-image" onClick={addImage}>Add Image</a>
                     </div>
-                    {addImageDivList}
+                    
                 </form>
-
+                {addImageDivList}
             </div>
             <div className={`${pendingPlaylist ? "SSSS" :"hidden" }`}>
+            <form action="">
+                    <label htmlFor="imagesrc">Image Source</label>
+                       <input className="inputImageSrc"
+                              type="text"
+                              value={src}
+                              onChange={e => updateSrc(e.target.value)}
+                              />
+                            {src}
+                       <label htmlFor="imagedescription">Image Description</label>
+                       <textarea id = "add-image-textarea" 
+                                 name="imagedescription"
+                                 cols="30" 
+                                 rows="10"
+                                 value={bio}
+                                 onChange={e => updateBio(e.target.value)}
+                                 />   
+                            {bio}
+                    <a href="#" className="add-image">Add Image</a>
+                </form> 
                 <div className="add-playlist-menu pending-playlist">
                     <div className="menu-title">Current Playlist</div>
                     {tempImageList}

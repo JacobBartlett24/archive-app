@@ -10,6 +10,7 @@ const AddPlaylist = () => {
     const [addImageDivList,setAddImageDivList] = useState([]);
     const [tempImageList,setTempImageList] = useState([]);
     const [pendingPlaylist,pendingPlaylistActive] = useState(false);
+    const [formPendingPlaylist,formPlaylistActive] = useState(false);
     
     const [src,updateSrc] = useState('')
     const [bio,updateBio] = useState('')
@@ -22,9 +23,13 @@ const AddPlaylist = () => {
         pendingPlaylistActive(pendingPlaylist => !pendingPlaylist);
     }
 
-    const addImage = () =>{
-        
-        
+    const addForm = () =>{
+        formPlaylistActive(formPendingPlaylist => !formPendingPlaylist)
+    }
+
+    const addImage = (e) =>{
+        e.currentTarget.classList.add('hidden');
+        addForm()
         addPendingPlaylistContainer()
     }
 
@@ -47,17 +52,14 @@ const AddPlaylist = () => {
                     </div>
                     
                 </form>
-                {addImageDivList}
-            </div>
-            <div className={`${pendingPlaylist ? "SSSS" :"hidden" }`}>
-            <form action="">
+            <form action="" className={`${formPendingPlaylist ? 'playlist' : 'playlist hidden'}`}>
                     <label htmlFor="imagesrc">Image Source</label>
                        <input className="inputImageSrc"
                               type="text"
                               value={src}
                               onChange={e => updateSrc(e.target.value)}
                               />
-                            {src}
+                            
                        <label htmlFor="imagedescription">Image Description</label>
                        <textarea id = "add-image-textarea" 
                                  name="imagedescription"
@@ -66,9 +68,11 @@ const AddPlaylist = () => {
                                  value={bio}
                                  onChange={e => updateBio(e.target.value)}
                                  />   
-                            {bio}
+                            
                     <a href="#" className="add-image">Add Image</a>
-                </form> 
+            </form>
+            </div>
+            <div className={`${pendingPlaylist ? "SSSS" :"hidden" }`}> 
                 <div className="add-playlist-menu pending-playlist">
                     <div className="menu-title">Current Playlist</div>
                     {tempImageList}

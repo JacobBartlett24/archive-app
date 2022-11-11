@@ -3,6 +3,7 @@ import { useState,useRef } from "react"
 import "./AddPlaylistCSS.css"
 import Image from "./ImagesClass"
 import AddImageForm from "./AddImageForm"
+import { cloneDeep, update } from "lodash"
 
 const AddPlaylist = () => {
 
@@ -14,6 +15,7 @@ const AddPlaylist = () => {
     
     const [src,updateSrc] = useState('')
     const [bio,updateBio] = useState('')
+    const [image,setImage] = useState(null)
 
     const alertOnSuccess = () =>{
         alert("Image Added")
@@ -31,6 +33,30 @@ const AddPlaylist = () => {
         e.currentTarget.classList.add('hidden');
         addForm()
         addPendingPlaylistContainer()
+    }
+
+    const addTempImage = () =>{
+        const tempImageSrc = cloneDeep(src)
+        const tempImageBio = cloneDeep(bio)
+        const tempImage = cloneDeep(image)
+        setTempImageList(tempImageList.concat(
+            <div key={tempImageList.length}className="temp-image">
+                <div id={tempImageList.length} style={{backgroundImage: tempImage}} alt=""></div>
+                <p>{tempImageBio}</p>
+            </div>
+        ))
+
+    }
+
+    const prepImage = (e) =>{
+        updateSrc(e.currentTarget.value)
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () =>{
+            const uploadedImage = reader.result;
+            setImage(uploadedImage)
+            reader.readAsDataURL(this.files[0]);
+        })
     }
 
     return(
@@ -55,9 +81,11 @@ const AddPlaylist = () => {
             <form action="" className={`${formPendingPlaylist ? 'playlist' : 'playlist hidden'}`}>
                     <label htmlFor="imagesrc">Image Source</label>
                        <input className="inputImageSrc"
-                              type="text"
+                              type="file"
                               value={src}
-                              onChange={e => updateSrc(e.target.value)}
+                              onChange={prepImage}
+                              accept="image/jpeg, image/png, image/jpg"
+                              required
                               />
                             
                        <label htmlFor="imagedescription">Image Description</label>
@@ -67,9 +95,10 @@ const AddPlaylist = () => {
                                  rows="10"
                                  value={bio}
                                  onChange={e => updateBio(e.target.value)}
+                                 required
                                  />   
                             
-                    <a href="#" className="add-image">Add Image</a>
+                    <a href="#" className="add-image" onClick={addTempImage}>Add Image</a>
             </form>
             </div>
             <div className={`${pendingPlaylist ? "SSSS" :"hidden" }`}> 

@@ -57,9 +57,6 @@ const AddPlaylist = () => {
 
     }
 
-    const removeItem  = (e) =>{
-        setTempImageList(tempImageList.splice(e.key))
-    }
 
     const addTempImage = (e) =>{
         
@@ -69,7 +66,7 @@ const AddPlaylist = () => {
             <div key={tempImageList.length}className="temp-image">
                 <img id=""src={src} alt=""></img>
                 <p>{tempImageBio}</p>
-                <a onClick={removeItem} className="x"><XIcon /></a>
+                <a onClick={setTempImageList(tempImageList.splice(e.key))} className="x"><XIcon /></a>
             </div>
         ))
 

@@ -125,5 +125,10 @@ button,.add-image {
     overflow-wrap: break-word;
     inline-size: 13rem;
     color: white;
-    overflow: scroll;
+    overflow: hidden;
+}
+
+.x{
+    height: 10px;
+    width: 10px;
 }

@@ -4,6 +4,7 @@ import "./AddPlaylistCSS.css"
 import Image from "./ImagesClass"
 import AddImageForm from "./AddImageForm"
 import { cloneDeep, update } from "lodash"
+import {ReactComponent as XIcon} from './Images/x-solid.svg'
 
 const AddPlaylist = () => {
 
@@ -56,6 +57,10 @@ const AddPlaylist = () => {
 
     }
 
+    const removeItem  = (e) =>{
+        setTempImageList(tempImageList.splice(e.key))
+    }
+
     const addTempImage = (e) =>{
         
         const tempImageBio = cloneDeep(bio)
@@ -64,6 +69,7 @@ const AddPlaylist = () => {
             <div key={tempImageList.length}className="temp-image">
                 <img id=""src={src} alt=""></img>
                 <p>{tempImageBio}</p>
+                <a onClick={removeItem} className="x"><XIcon /></a>
             </div>
         ))
 

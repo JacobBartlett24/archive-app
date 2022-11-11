@@ -21,7 +21,6 @@
 .add-playlist-menu{
     min-width: 20rem;
     min-height: 20rem;
-    
     background-color: var(--bg);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
     border-radius: var(--border-radius);
@@ -107,15 +106,24 @@ button,.add-image {
     height: 5rem;
     text-align: center;
     border-bottom: var(--border);
+    display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    
 }
 
-.temp-image h1{
-    margin: 0;
+.temp-image img{
+    margin: .7rem;
+    height: 3.5rem;
+    width: 3.5rem;
 }
 
 .temp-image p{
     margin: 0;
+    width: 1fr;
+    overflow-wrap: break-word;
+    inline-size: 13rem;
+    color: white;
+    overflow: scroll;
 }

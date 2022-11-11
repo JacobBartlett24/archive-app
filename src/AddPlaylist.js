@@ -12,6 +12,7 @@ const AddPlaylist = () => {
     const [tempImageList,setTempImageList] = useState([]);
     const [pendingPlaylist,pendingPlaylistActive] = useState(false);
     const [formPendingPlaylist,formPlaylistActive] = useState(false);
+    const [playlistTitle, setPlaylistTitle] = useState('')
     
     const [src,updateSrc] = useState('')
     const [bio,updateBio] = useState('')
@@ -35,28 +36,52 @@ const AddPlaylist = () => {
         addPendingPlaylistContainer()
     }
 
-    const addTempImage = () =>{
-        const tempImageSrc = cloneDeep(src)
+    
+
+    const clearForm = (e) =>{
+
+        let children = e.currentTarget.parentNode.childNodes;
+
+        console.log(children)
+
+        children.forEach(child => {
+            if(child.tagName == 'INPUT' || child.tagName == 'TEXTAREA'){
+                console.log(child.value)
+                child.value = '';
+            }
+        })
+        
+            
+        
+
+    }
+
+    const addTempImage = (e) =>{
+        
         const tempImageBio = cloneDeep(bio)
-        const tempImage = cloneDeep(image)
+        
         setTempImageList(tempImageList.concat(
             <div key={tempImageList.length}className="temp-image">
-                <div id={tempImageList.length} style={{backgroundImage: tempImage}} alt=""></div>
+                <img id=""src={src} alt=""></img>
                 <p>{tempImageBio}</p>
             </div>
         ))
 
+        clearForm(e);
+
     }
 
     const prepImage = (e) =>{
-        updateSrc(e.currentTarget.value)
-        const reader = new FileReader();
+        updateSrc(
+            URL.createObjectURL(e.target.files[0])
+        )
+        /* const reader = new FileReader();
 
         reader.addEventListener("load", () =>{
             const uploadedImage = reader.result;
             setImage(uploadedImage)
-            reader.readAsDataURL(this.files[0]);
-        })
+            reader.readAsDataURL(e.files[0]);
+        }) */
     }
 
     return(
@@ -66,7 +91,8 @@ const AddPlaylist = () => {
                 <form action="" method="get">
                     <div className="form-item">
                         <label htmlFor="PlaylistName">Playlist Name</label>
-                        <input type="text" />
+                        <input type="text"
+                                onChange={e => setPlaylistTitle(e.currentTarget.value)} />
                     </div>
                     <div className="form-item">
                         <label htmlFor="Description">Description</label>
@@ -82,7 +108,6 @@ const AddPlaylist = () => {
                     <label htmlFor="imagesrc">Image Source</label>
                        <input className="inputImageSrc"
                               type="file"
-                              value={src}
                               onChange={prepImage}
                               accept="image/jpeg, image/png, image/jpg"
                               required
@@ -93,7 +118,6 @@ const AddPlaylist = () => {
                                  name="imagedescription"
                                  cols="30" 
                                  rows="10"
-                                 value={bio}
                                  onChange={e => updateBio(e.target.value)}
                                  required
                                  />   
@@ -103,7 +127,7 @@ const AddPlaylist = () => {
             </div>
             <div className={`${pendingPlaylist ? "SSSS" :"hidden" }`}> 
                 <div className="add-playlist-menu pending-playlist">
-                    <div className="menu-title">Current Playlist</div>
+                    <div className="menu-title">{playlistTitle}</div>
                     {tempImageList}
                 </div>
             </div>

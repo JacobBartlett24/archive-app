@@ -95,6 +95,11 @@ button,.add-image {
 
 #add-image-textarea{
     margin-bottom: 1rem;
+    
+}
+
+textarea{
+    resize: none;
 }
 
 .playlist{

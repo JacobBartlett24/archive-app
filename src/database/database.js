@@ -20,8 +20,15 @@ db.connect((err) => {
 
 const app = express();
 
-app.listen('3001', () =>{
-    console.log('server started on port 3000')
+app.listen('3002', () =>{
+    console.log('server started on port 3002')
 })
 
-module.exports = db;
+app.post("/api/insert",(req,res) => {
+    const src = req.body.src;
+    const bio = ''
+
+    const query = 'INSERT INTO playlists (src,bio) VALUES (?,?)';
+    db.query(query,[src,bio], ((err,result) => {console.log(result);console.log(err)}))
+})
+

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styled from "styled-components";
+/* eslint-disable react/jsx-filename-extension */
+import styled from 'styled-components';
 
 const FooterStyle = styled.div`
     display: flex;
@@ -8,15 +8,14 @@ const FooterStyle = styled.div`
     align-items: center;
     height: 30px;
     background-color:black;
-`
+`;
 
-function Footer(){
-
-    return(
-        <FooterStyle>
-            <p>Footer</p>
-        </FooterStyle>
-    )
+function Footer() {
+  return (
+    <FooterStyle>
+      <p>Footer</p>
+    </FooterStyle>
+  );
 }
 
 export default Footer;

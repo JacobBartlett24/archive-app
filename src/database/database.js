@@ -1,44 +1,16 @@
 const express = require('express');
+// Line 1
+const app = express(); // Line 2
+const port = process.env.PORT || 3001; // Line 3
 
-const app = express();
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
+// This displays message that the server running and listening to specified port
+app.listen(port, () => console.log(`Listening on port ${port}`)); // Line 6
 
-const cors = require('cors');
-
-// create connection
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'archive',
+// create a GET route
+app.get('/express_backend', (req, res) => { // Line 9
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); // Line 10
 });
 
-// Connect
-
-db.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log('mysql connected');
-});
-
-app.use(cors);
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// eslint-disable-next-line no-unused-vars
-app.post('/api/insert', (req, res) => {
-  const { src } = req.body;
-  const bio = '';
-
-  const query = 'INSERT INTO playlists (src,bio) VALUES (?,?)';
-  db.query(query, [src, bio], ((err, result) => {
-    console.log(result);
-    console.log(err);
-  }));
-});
-
-app.listen('3001', () => {
-  console.log('server started on port 3001');
+app.get('/insert', (req, res) => {
+  res.send({ express: 'asdasd' });
 });

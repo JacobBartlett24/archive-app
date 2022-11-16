@@ -5,11 +5,10 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 import { useState } from 'react';
+import axios from 'axios';
 import './AddPlaylistCSS.css';
 import { cloneDeep } from 'lodash';
 import { ReactComponent as XIcon } from './Images/x-solid.svg';
-
-const axios = require('axios');
 
 function AddPlaylist() {
   const [tempImageList, setTempImageList] = useState([]);
@@ -52,7 +51,7 @@ function AddPlaylist() {
         <div key={tempImageList.length} id={tempImageList.length} className="temp-image">
           <img id="" src={src} alt="" />
           <p>{tempImageBio}</p>
-          <button type="button" onClick={() => setTempImageList(tempImageList.splice(e.id, 1))} className="x"><XIcon /></button>
+          <div onClick={() => setTempImageList(tempImageList.splice(e.id, 1))} className="x"><XIcon /></div>
         </div>,
       ));
     }
@@ -69,15 +68,13 @@ function AddPlaylist() {
     );
   };
 
-  const handleSubmit = () => {
-    const option = window.confirm('Are you sure you want to post?');
-    if (option) {
-      axios.post('http://localhost:3002/api/insert', {
-        src: playlistTitle,
-      }).then(() => {
-        alert('success');
-      });
-    }
+  const handleSubmit = (e) => {
+    axios.post('http://localhost:3001/api/insert', {
+      src: playlistTitle,
+    }).then(() => {
+      alert('success');
+    });
+    e.preventDefault();
   };
 
   return (

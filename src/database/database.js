@@ -1,5 +1,10 @@
 const express = require('express');
+
+const app = express();
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
+
+const cors = require('cors');
 
 // create connection
 const db = mysql.createConnection({
@@ -18,11 +23,9 @@ db.connect((err) => {
   console.log('mysql connected');
 });
 
-const app = express();
-
-app.listen('3002', () => {
-  console.log('server started on port 3002');
-});
+app.use(cors);
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // eslint-disable-next-line no-unused-vars
 app.post('/api/insert', (req, res) => {
@@ -30,5 +33,12 @@ app.post('/api/insert', (req, res) => {
   const bio = '';
 
   const query = 'INSERT INTO playlists (src,bio) VALUES (?,?)';
-  db.query(query, [src, bio], ((err, result) => { console.log(result); console.log(err); }));
+  db.query(query, [src, bio], ((err, result) => {
+    console.log(result);
+    console.log(err);
+  }));
+});
+
+app.listen('3001', () => {
+  console.log('server started on port 3001');
 });

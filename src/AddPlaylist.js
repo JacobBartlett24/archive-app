@@ -5,8 +5,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 import { useState } from 'react';
-import axios from 'axios';
 import './AddPlaylistCSS.css';
+import axios from 'axios';
 import { cloneDeep } from 'lodash';
 import { ReactComponent as XIcon } from './Images/x-solid.svg';
 
@@ -68,13 +68,13 @@ function AddPlaylist() {
     );
   };
 
-  const handleSubmit = (e) => {
-    axios.post('http://localhost:3001/api/insert', {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post('http://localhost:3002/insert', {
       src: playlistTitle,
     }).then(() => {
       alert('success');
     });
-    e.preventDefault();
   };
 
   return (

@@ -51,5 +51,6 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "react-router-dom": "^6.4.2"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
